@@ -14,4 +14,4 @@ print(groceryList[-1]);
 
 print(groceryList[2-4]);
 
-
+print(groceryList[2:5])
