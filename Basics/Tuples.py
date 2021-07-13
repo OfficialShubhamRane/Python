@@ -10,7 +10,7 @@ x, y, z = coordinates;
 print(x, y, z);
 print(coordinates);
 
-# Packing with tuples
+# Packing with Tuples
 x = -40.8583724;
 y = 73.4758347;
 z = 238;
