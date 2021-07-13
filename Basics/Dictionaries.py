@@ -27,3 +27,17 @@ for digit in digits:
     word += ( digit_to_words_Dict.get(digit, "<!>") + " ") ;
 
 print(word);
+
+# Emoji Mapper
+emoji_mapper = {
+    ":)": "😊",
+    ":(": "☹",
+    "B)": "😎",
+
+}
+sentence = input("> ");
+words = sentence.split(" ");
+result = "";
+for word in words:
+    result += ( emoji_mapper.get(word, word) + " " );
+print(result);
