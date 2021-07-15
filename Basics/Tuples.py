@@ -1,6 +1,6 @@
 # # Tuples are immutable, initialized with ()
 # waffle = ("Shubham", "Rajan", "Rane");
-# print(waffle.index("Shubha/m"));
+# print(waffle.index("Shubham"));
 # # print(waffle.index("Shubham",1)); # This one throws an error
 # print( len(waffle) );
 
