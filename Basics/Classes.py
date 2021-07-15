@@ -8,4 +8,5 @@ class Person:
 
 
 obj = Person("Shubham");
+print(obj.name);
 obj.talk("Shubham");
