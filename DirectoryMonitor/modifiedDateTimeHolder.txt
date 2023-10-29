@@ -1,0 +1,4 @@
+
+E:\\DirectoryMonitorTestDirectory2|10/29/2023 14:29:29
+E:\\DirectoryMonitorTestDirectory1|10/29/2023 13:24:24
+E:\\DirectoryMonitorTestDirectory3|10/29/2023 14:32:10
