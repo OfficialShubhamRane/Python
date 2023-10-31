@@ -1,17 +1,16 @@
 #!/usr/bin/python
-import concurrent.futures
+import sys
 from datetime import datetime
 import os
-import string
 import time
 from FileManager import FileManager
 from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
-from watchdog.utils.dirsnapshot import DirectorySnapshot
-from winotify import Notification
-import threading
-
-from icecream import ic
+from winotify import Notification, audio
+from colorama import Fore, Style
+import prompt
+import psutil
+import pystray
+import PIL.Image
 
 
 class Watcher:
@@ -22,6 +21,18 @@ class Watcher:
     def __init__(self):
         self.observer = Observer()
         fm = FileManager()
+        prompt
+
+        def on_close_clicked(icon, item):
+            print("closing application")
+            icon.stop()
+            os._exit(0)
+
+        trayImage = PIL.Image.open(os.getcwd() + "\\icon.png")
+        icon = pystray.Icon("Directory Monitor", trayImage,"Directory Monitor", menu=pystray.Menu(
+            pystray.MenuItem("Close", on_close_clicked)))
+
+        icon.run_detached()
 
         while (True):
             directories_to_watch = fm.readTobeMonitoredDirectories()
@@ -54,11 +65,13 @@ class Watcher:
                 if os.path.isfile(os.getcwd() + "\\modifiedDateTimeHolder.txt"):
                     # comparison
                     if current_modify_date_datetime != last_modified_of_directory_datetime:
-                        print("    changes in directory " + directory_to_watch)
+                        print(Fore.RED + "    changes in directory " + directory_to_watch + Style.RESET_ALL)
                         # notification creator
-                        toast = Notification(app_id='DiriMon', title=directory_to_watch, msg="Modified",
-                                             duration="short")
-                        # toast.add_actions(label="Go to Directory", launch=directory_to_watch)
+                        toast = Notification(app_id='Directory Monitor', title="Folder " + directory_to_watch,
+                                             msg="Modified",
+                                             duration="short", icon=os.getcwd() + "\\icon.png")
+                        toast.add_actions(label="Go to Directory", launch=directory_to_watch.replace("\\\\", "\\"))
+                        toast.set_audio(audio.Default, loop=False)
                         toast.show()
 
                 var = directory_to_m_datetime_map_string + "\n" + directory_to_watch + "|" + current_modify_date_str
@@ -81,4 +94,9 @@ class Watcher:
 
 
 if __name__ == '__main__':
-    w = Watcher()
+
+    # if(not "Diri-mon.exe" in (i.name() for i in psutil.process_iter())):
+        w = Watcher()
+
+
+

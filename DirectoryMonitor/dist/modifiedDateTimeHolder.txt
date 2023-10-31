@@ -1,4 +1,4 @@
 
-E:\\DirectoryMonitorTestDirectory2|10/29/2023 12:47:57
-E:\\DirectoryMonitorTestDirectory3|10/29/2023 12:47:29
-E:\\DirectoryMonitorTestDirectory1|10/29/2023 12:47:53
+E:\\DirectoryMonitorTestDirectory2|10/30/2023 22:45:07
+E:\\DirectoryMonitorTestDirectory1|10/30/2023 22:37:09
+E:\\DirectoryMonitorTestDirectory3|10/30/2023 22:48:21

@@ -1,6 +1,5 @@
 import os
 
-
 class FileManager:
     def __init__(self):
         pass
@@ -22,11 +21,14 @@ class FileManager:
         return set(directories_list)
 
     def write_modified_datetime(self, content):
+        # os.system("attrib -h " + os.getcwd() + "\\modifiedDateTimeHolder.txt")
         f = open(os.getcwd() + "\\modifiedDateTimeHolder.txt", "w")
         f.write(content)
+        # os.system("attrib +h "+os.getcwd() + "\\modifiedDateTimeHolder.txt")
         f.close()
 
     def read_modified_datetime(self, directory_to_get_data_for):
+        # os.system("attrib -h " + os.getcwd() + "\\modifiedDateTimeHolder.txt")
         f = open(os.getcwd() + "\\modifiedDateTimeHolder.txt", "r")
         modified_date_time = ""
         for line in f:
@@ -35,6 +37,7 @@ class FileManager:
                 # print("modified date for ", directory_to_get_data_for, " is ", split_str[1])
                 modified_date_time = split_str[1]
         f.close()
+        # os.system("attrib +h " + os.getcwd() + "\\modifiedDateTimeHolder.txt")
         return modified_date_time.strip()
 
 
